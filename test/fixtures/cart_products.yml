@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  quantity: 1
+  unit_price: 1
+  tax: 1.5
+  total: 1.5
+  shipping: MyString
+  product: one
+  cart: one
+
+two:
+  quantity: 1
+  unit_price: 1
+  tax: 1.5
+  total: 1.5
+  shipping: MyString
+  product: two
+  cart: two

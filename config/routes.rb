@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  resources :orders
+  resources :cart_products
+  resources :carts
+  resources :products
   root 'application#home'
 
   get '/signup', to: 'users#new'

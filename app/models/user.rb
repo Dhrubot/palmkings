@@ -1,6 +1,11 @@
 class User < ApplicationRecord
     has_secure_password
-    
+
+    has_many :carts
+    has_many :seller_products, class_name: "Product", foreign_key: "seller_id"
+    has_many :buyer_orders, class_name: "Order", foreign_key: "buyer_id"
+    has_many :ordered_carts, through: :carts
+
     validates :username, :email, presence: true
     validates :username, :email, uniqueness: true
 
