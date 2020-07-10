@@ -22,4 +22,10 @@ class ProductsController < ApplicationController
     def destroy
     end
 
+    private
+
+    def product_params
+        params.require(:product).permit(:title, :proudct_model, :brand, :storage_capacity, :condition, :color, :description, :quantity, :price)
+    end
+
 end

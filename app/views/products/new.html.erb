@@ -1,4 +1,4 @@
-<h1>Create A Product</h1>
+<h1>Create A Product For Sale</h1>
 
 <%= form_for @product do |f| %>
 
@@ -7,6 +7,12 @@
 
     <%= f.label :brand %>
     <%= f.text_field :brand %>
+
+    <%= f.label :phone_model %>
+    <%= f.text_area :phone_model %>
+
+    <%= f.label :storage_capacity %>
+    <%= f.text_area :storage_capacity %>
 
     <%= f.label :condition %>
     <%= f.text_field :condition %>
