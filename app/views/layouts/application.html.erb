@@ -14,6 +14,7 @@
       <%= link_to 'Products', products_path %><br>
       <%= link_to 'Sell a Product', new_product_path %><br>
       <%= link_to 'Cart', cart_products_path %><br>
+      <%= link_to 'Dashboard', user_path(current_user) %>
     <%= yield %>
   </body>
 </html>

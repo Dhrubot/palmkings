@@ -24,7 +24,7 @@ class ApplicationController < ActionController::Base
     def current_cart
 
         if logged_in?
-            @cart = current_user.carts.first 
+            @cart = current_user.carts.last 
         else
             if session[:cart_id]
                 @cart = Cart.find_by(:id => session[:cart_id])

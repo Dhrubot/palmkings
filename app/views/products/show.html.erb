@@ -9,4 +9,8 @@
 <%= @product.description %>
 <%= @product.price %>
 
-<%= link_to "Add to Cart", edit_cart_path %>
+<%= link_to "Add to Cart", new_cart_products_path %>
+
+<%= link_to 'Edit', edit_product_path %>
+
+<%= link_to 'Delete', product_path(@product), method: :delete %>

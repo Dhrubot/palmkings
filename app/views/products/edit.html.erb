@@ -1,0 +1,34 @@
+<h1> Edit Product Details </h1>
+
+<%= form_for @product do |f| %>
+
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+
+    <%= f.label :brand %>
+    <%= f.text_field :brand %>
+
+    <%= f.label :product_model %>
+    <%= f.text_field :product_model, :placeholder => "eg: iPhone X" %>
+
+    <%= f.label :storage_capacity %>
+    <%= f.text_field :storage_capacity, :placeholder => "eg: 64 GB" %>
+
+    <%= f.label :condition %>
+    <%= f.select :condition, options_for_select(["Brand New", "Refubrished", "Used"]) %>
+
+    <%= f.label :color %>
+    <%= f.text_field :color %>
+
+    <%= f.label :description %>
+    <%= f.text_area :description %>
+
+    <%= f.label :quantity %>
+    <%= f.number_field :quantity %>
+
+    <%= f.label :price %>
+    <%= f.number_field :price %>
+
+    <%= f.submit 'Update'%> 
+
+<% end %>

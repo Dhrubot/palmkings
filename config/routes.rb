@@ -1,9 +1,6 @@
 Rails.application.routes.draw do
 
-  resources :orders
-  resources :cart_products
-  resources :carts
-  resources :products
+  
   root 'application#home'
 
   get '/signup', to: 'users#new'
@@ -17,8 +14,14 @@ Rails.application.routes.draw do
   get '/auth/:provider/callback', to: 'sessions#oauth_login'
   get '/auth/facebook', to: 'sessions#oauth_login'
 
-  
+  resources :users do
+    resources :products, only: [:index, :new, :create]
+  end
 
+  resources :orders
+  resources :cart_products
+  resources :carts
+  resources :products
   resources :users
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

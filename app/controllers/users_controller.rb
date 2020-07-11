@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
 
+    before_action :logged_in?, :current_user, :redirect_if_not_logged_in
+
     def new
         @user = User.new
     end
@@ -15,7 +17,7 @@ class UsersController < ApplicationController
     end
 
     def show
-        @user = User.find_by(id: params[:id])
+        @user = User.find_by(id: current_user.id)
     end
 
     def update
