@@ -1,5 +1,5 @@
-<h1>Sign Up Page </h1>
 
+<h1> Update Account </h1>
 <%= form_for @user do |f| %>
 
     <%= f.label :firstname %>
@@ -8,18 +8,15 @@
     <%= f.label :lastname %>
     <%= f.text_field :lastname %>
 
-    <%= f.label :username %>
-    <%= f.text_field :username %>
-
     <%= f.label :email %>
-    <%= f.email_field :email %>
+    <%= f.text_field :email %>
 
     <%= f.label :password %>
-    <%= f.password_field :password %>
+    <%= f.text_field :password %>
 
     <%= f.label :password_confirmation, "Confirm Password" %>
-    <%= f.password_field :password_confirmation %>
+    <%= f.text_field :password_confirmation %>
 
-    <%= f.submit 'Sign up'%>
+    <%= f.submit 'Update'%> 
 
 <% end %>

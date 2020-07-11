@@ -1,0 +1,12 @@
+<h1> Your Cart </h1>
+
+<% @cart_products.each.with_index(1) do |cp, i|%>
+    <%= "#{i}. #{cp.product.title}" %> <br>
+    <%= "Quantity: #{cp.quantity}" %> <br>
+    <%= link_to 'Edit', edit_cart_product_path(cp) %> <%= link_to 'Remove', cart_product_path(cp), method: :delete %><br> 
+
+    Price <%= cp.product.price %><br>
+    subtotal <%= cp.subtotal %><br>
+    "----------------"<br>
+<%end%>
+<%= "Total amount: #{@cart.total}" %>

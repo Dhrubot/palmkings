@@ -1,6 +1,11 @@
-<h1>Welcome <%= @user.firstname%>!<h1>
+<h1> <%= @user.firstname %> </h1>
+<h3>
+    Firstname: <%= @user.firstname %><br>
+    Lastname: <%= @user.lastname %><br>
+    Username: <%= @user.username %><br>
+    Your Email: <%= @user.email%><br>
+</h3>
 
-<h2> See all the products currently on for sale </h2>
-<%= link_to "Active sale", user_products_path(@user) %>
+<%= link_to 'Edit', edit_user_path(@user) %>
 
-<%= link_to 'Sell a new item', new_user_product_path(@user) %>
+<%= link_to 'Delete', user_path(@user), method: :delete %>

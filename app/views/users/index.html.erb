@@ -1,0 +1,10 @@
+<h1> Dashboard </h1>
+
+<h1>Welcome <%= @user.firstname%>!<h1>
+
+<h2> See all the products currently on for sale </h2>
+<%= link_to "Active sale", user_products_path(@user) %>
+
+<%= link_to 'Sell a new item', new_user_product_path(@user) %>
+
+<h1> Edit Product Details </h1>

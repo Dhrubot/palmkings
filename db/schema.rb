@@ -16,11 +16,7 @@ ActiveRecord::Schema.define(version: 2020_07_10_061504) do
   enable_extension "plpgsql"
 
   create_table "cart_products", force: :cascade do |t|
-    t.integer "quantity"
-    t.integer "unit_price"
-    t.float "tax"
-    t.float "total"
-    t.string "shipping"
+    t.integer "quantity", default: 1
     t.bigint "product_id", null: false
     t.bigint "cart_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -30,7 +26,7 @@ ActiveRecord::Schema.define(version: 2020_07_10_061504) do
   end
 
   create_table "carts", force: :cascade do |t|
-    t.bigint "user_id", null: false
+    t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_carts_on_user_id"

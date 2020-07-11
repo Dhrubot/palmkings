@@ -7,10 +7,10 @@
 <%= @product.condition %>
 <%= @product.color%>
 <%= @product.description %>
-<%= @product.price %>
+$ <%= @product.price %>
 
-<%= link_to "Add to Cart", new_cart_products_path %>
+<%= link_to "Add to Cart", new_cart_product_path(@product) %>
 
-<%= link_to 'Edit', edit_product_path %>
+<%= link_to 'Edit', edit_product_path(@product) %>
 
 <%= link_to 'Delete', product_path(@product), method: :delete %>

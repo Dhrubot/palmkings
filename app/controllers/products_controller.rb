@@ -1,7 +1,7 @@
 class ProductsController < ApplicationController
 
     #check if the user is logged_in before create, and update actions.
-    before_action :current_user, :redirect_if_not_logged_in, except: [:index, :show]
+    before_action :logged_in?, :current_user, :redirect_if_not_logged_in, except: [:index, :show]
 
     def index
         if params[:user_id] && user = User.find_by(id: params[:user_id])
@@ -30,21 +30,21 @@ class ProductsController < ApplicationController
     end
 
     def show
-        @product = Product.find_by(:id => params[:id])
+        @product = Product.find_by_id(params[:id])
     end
 
     def edit
-        @product = Product.find_by(params[:product_id])
+        @product = Product.find_by_id(params[:id])
     end
 
     def update
-        @product = Product.find_by(params[:product_id])
+        @product = Product.find_by_id(params[:id])
         @product.update(product_params)
         redirect_to product_path(@product)
     end
 
     def destroy
-        @product = Product.find_by(params[:product_id])
+        @product = Product.find_by_id(params[:id])
         @product.destroy
         redirect_to products_path
     end
