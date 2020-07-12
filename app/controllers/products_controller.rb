@@ -1,7 +1,6 @@
 class ProductsController < ApplicationController
-
-    #check if the user is logged_in before create, and update actions.
-    before_action :logged_in?, :current_user, :redirect_if_not_logged_in, except: [:index, :show]
+    
+    # before_action :logged_in?, :current_user, :redirect_if_not_logged_in, except: [:index, :show]
 
     def index
         if params[:user_id] && user = User.find_by(id: params[:user_id])

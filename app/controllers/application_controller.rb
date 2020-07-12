@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-
+    
     helper_method :current_user, :logged_in?, :redirect_if_not_logged_in
 
     def home
@@ -22,17 +22,12 @@ class ApplicationController < ActionController::Base
     end
 
     def current_cart
-
-        if logged_in?
-            @cart = current_user.carts.last 
+        
+        if session[:cart_id]
+            @cart = Cart.find_by(:id => session[:cart_id])
         else
-            if session[:cart_id]
-                @cart = Cart.find_by(:id => session[:cart_id])
-            else
-                @cart = Cart.create
-                session[:cart_id] = @cart.id
-            end
-
+            @cart = Cart.create
+            session[:cart_id] = @cart.id
         end
     end
 

@@ -2,6 +2,15 @@ class UsersController < ApplicationController
 
     before_action :logged_in?, :current_user, :redirect_if_not_logged_in, except: [:new, :create]
 
+
+    def index
+        redirect_to root_path
+    end
+
+    def dashboard
+        @user = User.find_by_id(current_user.id)
+    end
+
     def new
         @user = User.new
     end
@@ -10,6 +19,8 @@ class UsersController < ApplicationController
         @user = User.new(user_params)
         if @user.save
             session[:user_id] = @user.id
+                     # add the cart to the user upon logging in
+
             redirect_to user_path(@user)
         else
             render :new
@@ -43,6 +54,6 @@ class UsersController < ApplicationController
     private
 
     def user_params
-        params.require(:user).permit(:firstname, :lastname, :username, :email, :password)
+        params.require(:user).permit(:firstname, :lastname, :username, :email, :password, :password_confirmation)
     end
 end

@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
 
+  get '/users/:id/dashboard', to: 'users#dashboard', as: "dashboard"
+
   #Omniauth
   get '/auth/:provider/callback', to: 'sessions#oauth_login'
   get '/auth/facebook', to: 'sessions#oauth_login'

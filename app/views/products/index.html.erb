@@ -1,3 +1,6 @@
+<ul>
 <% @products.each do |p|%>
-    <%= link_to p.title, product_path(p) %>
+    <li><%= link_to p.title, product_path(p) %></li>
+    <br>
 <% end %>
+</ul>

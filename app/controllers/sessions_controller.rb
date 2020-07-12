@@ -1,13 +1,12 @@
 class SessionsController < ApplicationController
 
-  def new
-  end
-
   def create
     @user = User.find_by(username: params[:user][:username])
 
     if @user && @user.authenticate(params[:user][:password])
+
       session[:user_id] = @user.id
+
       redirect_to user_path(@user)
     else
       flash[:danger] = "Username or Password is wrong"
@@ -16,7 +15,6 @@ class SessionsController < ApplicationController
   end
 
   def oauth_login
-
     if params[:provider] == "google_oauth2"
       @user = User.from_google(auth)                      # User model
       
@@ -25,6 +23,7 @@ class SessionsController < ApplicationController
     end
     @user.save
     session[:user_id] = @user.id
+    
     redirect_to user_path(@user)
   end
 
