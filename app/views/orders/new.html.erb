@@ -20,6 +20,26 @@
     <%= f.label :payment_method %>
     <%= f.select :payment_method, options_for_select(["Card", "Bank Account", "Paypal"]) %>
 
+    <%= f.fields_for :buyer do |buyer_attr| %>
+        <%= buyer_attr.label :firstname %>
+        <%= buyer_attr.text_field :firstname %>
+
+        <%= buyer_attr.label :lastname %>
+        <%= buyer_attr.text_field :lastname %>
+
+        <%= buyer_attr.label :username %>
+        <%= buyer_attr.text_field :username %>
+
+        <%= buyer_attr.label :email %>
+        <%= buyer_attr.email_field :email %>
+
+        <%= buyer_attr.label :password %>
+        <%= buyer_attr.password_field :password %>
+
+        <%= buyer_attr.label :password_confirmation, "Confirm Password" %>
+        <%= buyer_attr.password_field :password_confirmation %>
+    <% end %>
+
     <%= f.submit "Complete Order" %>
 
 <% end %>
