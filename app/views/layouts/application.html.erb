@@ -7,15 +7,55 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
   </head>
   <body>
-      <%= link_to 'Home', root_path %><br>
-      <%= link_to 'Log out', '/logout', method: :delete %><br>
-      <%= link_to 'Products', products_path %><br>
-      <%= link_to 'Sell a Product', new_product_path %><br>
-      <%= link_to 'Cart', cart_products_path %><br>
-      <%= link_to 'Dashboard', dashboard_path(current_user.id) if current_user %>
-      <br>
+
+      <!--NavBar -->
+      <nav class="navbar navbar-expand-md navbar-dark bg-dark sticky-top">
+                <div class="container">
+                    <a class="navbar-brand" href="/">PalmKings</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                        <ul class="navbar-nav ml-auto">
+                          <li class="nav-item"><%= link_to 'Home', root_path, class: "nav-link" %></li>
+                          <li class="nav-item"><%= link_to 'Products', products_path, class: "nav-link" %></li>
+                          <li class="nav-item"><%= link_to 'Cart', cart_products_path, class: "nav-link" %>
+                            <%if logged_in? %>
+                            <!--Drop Down Menu -->
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <%=current_user.firstname%>
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <%= link_to 'Sell a Product', new_product_path, class: "dropdown-item" %>
+                                        <%= link_to 'Dashboard', dashboard_path(current_user.id), class: "dropdown-item" if current_user %>
+                                        <%= link_to 'Log out', '/logout', method: :delete, class: "dropdown-item" %>
+                                    </div>
+                                </li>
+                            <%else%>
+                              <li class="nav-item"><%= link_to 'Log In', login_path, class: "nav-link" %></li>
+                            <%end%>
+                        </ul>
+                    </div>
+                </div>  
+            </nav>
+
+
     <%= yield %>
+
+
+
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+  
   </body>
+
 </html>
