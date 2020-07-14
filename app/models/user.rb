@@ -30,4 +30,9 @@ class User < ApplicationRecord
             user.password = SecureRandom.hex
         end
     end
+
+    def new_cart
+        self.carts.build
+        self.save
+    end
 end

@@ -1,6 +1,18 @@
-<ul>
-<% @products.each do |p|%>
-    <li><%= link_to p.title, product_path(p) %></li>
-    <br>
-<% end %>
-</ul>
+
+<div class="container-fluid padding">
+    <div class="row">
+        <div class="col-12">
+
+            <ul style="list-style-type:none">
+                <% @products.each do |p|%>
+                    
+                    <% if p.image.attached? %>
+                        <%= image_tag url_for(p.thumbnail) %>
+                    <%end%>
+                    <li><%= link_to p.title, product_path(p) %></li>
+                        <br>
+                <% end %>
+            </ul>
+        </div>
+    </div>
+</div>

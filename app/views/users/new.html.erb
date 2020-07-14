@@ -1,25 +1,46 @@
-<h1>Sign Up Page </h1>
+<h1 class="first-class align-center">Sign Up Here</h1>
 
-<%= form_for @user do |f| %>
+<div class="container-fluid padding">
+    <div class="row welcome text-left">
+        <div class="col-12">
 
-    <%= f.label :firstname %>
-    <%= f.text_field :firstname %>
+            <div>
+                <%= render partial: 'layouts/errors', locals: { object: @user } %>
+            </div>
 
-    <%= f.label :lastname %>
-    <%= f.text_field :lastname %>
+                
+                    <%= bootstrap_form_for @user do |f| %>
 
-    <%= f.label :username %>
-    <%= f.text_field :username %>
+                    <div class="form-row">
+                        <div class="col">
+                            <%= f.text_field :firstname %>
+                        </div>
 
-    <%= f.label :email %>
-    <%= f.email_field :email %>
+                        <div class="col">  
+                            <%= f.text_field :lastname %>
+                        </div>
 
-    <%= f.label :password %>
-    <%= f.password_field :password %>
+                        <div class="col">
+                            <%= f.text_field :username %>
+                        </div>
 
-    <%= f.label :password_confirmation, "Confirm Password" %>
-    <%= f.password_field :password_confirmation %>
+                        <div class="col">
+                            <%= f.email_field :email %>
+                        </div>
 
-    <%= f.submit 'Sign up'%>
+                        <div class="col">
+                            <%= f.password_field :password %>
+                        </div>
 
-<% end %>
+                        <div class="col">
+                            <%= f.password_field :password_confirmation %>
+                        </div>
+                    </div>
+
+                    <%= f.submit 'Sign up', class: "btn btn-success" %>
+
+                <% end %>
+            </div>
+        </div>
+    </div>
+</div>

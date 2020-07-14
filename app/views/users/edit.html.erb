@@ -1,22 +1,23 @@
-
+<div class="container-fluid">
+<div class="row">
+<div class="col">
 <h1> Update Account </h1>
-<%= form_for @user do |f| %>
+<%= bootstrap_form_for @user do |f| %>
 
-    <%= f.label :firstname %>
     <%= f.text_field :firstname %>
 
-    <%= f.label :lastname %>
     <%= f.text_field :lastname %>
 
-    <%= f.label :email %>
     <%= f.email_field :email %>
 
-    <%= f.label :password %>
     <%= f.password_field :password %>
 
-    <%= f.label :password_confirmation, "Confirm Password" %>
     <%= f.password_field :password_confirmation %>
 
-    <%= f.submit 'Update'%> 
+    <%= f.submit 'Update', class: "btn btn-primary"%> 
 
 <% end %>
+
+</div>
+</div>
+</div>

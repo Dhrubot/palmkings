@@ -1,20 +1,36 @@
-<h1>Log In Page </h1>
+<div class="container align-items-center">
+    <div class="row">
+        <div class="col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3 col-md-5 col-md-offset-4 col-lg-4 col-lg-offset-4">
+            <div class="panel panel-default box-shadow">
+                <div class="panel-heading">
+                <span class="text-primary">Log In Here</span>
+                <span class="text-muted pull-right today" title="Today"></span>              
+                </div><!--.panel-heading-->
 
-<% if flash[:danger] %>
-    <%= flash[:danger] %>
-<% end %>
+                <% if flash[:danger] %>
+                    <%= flash[:danger] %>
+                <% end %>
 
-<%= form_for :user do |f| %>
+            <div class="panel-body">
+                <%= bootstrap_form_for :user do |f| %>
 
-    <%= f.label :username %>
-    <%= f.text_field :username %>
+                    <%= f.text_field :username %>
 
-    <%= f.label :password %>
-    <%= f.password_field :password %>
+                    <%= f.password_field :password %>
 
 
-    <%= f.submit 'Log In'%>
-<% end %>
-<%= link_to 'Log In with Google', '/auth/google_oauth2'%>
-<%= link_to 'Log In with Facebook', '/auth/facebook'%>
-<h3>Dont't have an account? <%= link_to 'Create account', signup_path %></h3>
+                    <%= f.submit 'Log In', class: "btn btn-block btn-primary"%>
+                <% end %>
+                <br>
+                <p class="text-center text-muted h8">
+                    Or login with
+                </p>
+                    <%= link_to 'Google', '/auth/google_oauth2', class: "btn btn-block btn-success"%>
+                    <%= link_to 'Facebook', '/auth/facebook', class: "btn btn-block btn-success"%>
+
+                    Dont't have an account? <%= link_to 'Create account', signup_path %>
+            </div>
+
+        </div>
+    </div>
+</div>

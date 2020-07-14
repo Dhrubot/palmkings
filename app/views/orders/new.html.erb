@@ -1,45 +1,44 @@
+<div class="container">
+<div class="row">
+<div class="col">
+
 <h1> Place Your Order </h1>
 
-<%= form_for @order do |f| %>
+<%= render partial: 'layouts/errors', locals: {object: @order} %>
 
-    <%= f.label :address_field_1 %>
+<%= bootstrap_form_for @order do |f| %>
+
     <%= f.text_field :address_field_1, placeholder: "House and street number" %>
 
-    <%= f.label :address_field_2 %>
     <%= f.text_field :address_field_2, placeholder: "Apt/Flr" %>
 
-    <%= f.label :city %>
     <%= f.text_field :city %>
 
-    <%= f.label :state %>
     <%= f.text_field :state, placeholder: "eg: NY"%>
 
-    <%= f.label :zipcode %>
     <%= f.text_field :zipcode %>
 
-    <%= f.label :payment_method %>
     <%= f.select :payment_method, options_for_select(["Card", "Bank Account", "Paypal"]) %>
 
     <%= f.fields_for :buyer do |buyer_attr| %>
-        <%= buyer_attr.label :firstname %>
+
         <%= buyer_attr.text_field :firstname %>
 
-        <%= buyer_attr.label :lastname %>
         <%= buyer_attr.text_field :lastname %>
 
-        <%= buyer_attr.label :username %>
         <%= buyer_attr.text_field :username %>
 
-        <%= buyer_attr.label :email %>
         <%= buyer_attr.email_field :email %>
 
-        <%= buyer_attr.label :password %>
         <%= buyer_attr.password_field :password %>
 
-        <%= buyer_attr.label :password_confirmation, "Confirm Password" %>
         <%= buyer_attr.password_field :password_confirmation %>
     <% end %>
 
-    <%= f.submit "Complete Order" %>
+    <%= f.submit "Complete Order", class:"btn btn-primary btn-sm" %>
 
 <% end %>
+
+</div>
+</div>
+</div>

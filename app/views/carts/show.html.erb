@@ -1,3 +1,6 @@
+<div class="container-fluid padding">
+<div class="row padding">
+<div class="col-lg-12">
 <h1>Your Cart</h1>
 <% if @cart.empty? %>%
     <h3> It's so lonesome here!!!
@@ -6,7 +9,11 @@
 
 <% else %>
 
-    <% @cart.cart_products|%>
+    <% @cart.cart_products %>
     
 
 <% end %>
+
+</div>
+</div>
+</div>

@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
 
-    before_action :current_cart, :logged_in?, :current_user, :set_cart
+    before_action :current_cart, :logged_in?, :set_cart
 
     def new
         @order = Order.new
@@ -10,21 +10,26 @@ class OrdersController < ApplicationController
     def create
         @order = Order.new(order_params)
         @order.cart = current_cart
-        @order.buyer = current_user
+        if current_user
+            @order.buyer = current_user
+        else
+            @user = @order.build_buyer(order_params[:buyer_attributes])
+        end
 
         if @order.save
-            current_cart.cart_products.destroy_all
+            session[:user_id] = @order.buyer.id
+            current_user.new_cart
 
             redirect_to order_path(@order)
         else
-            flash[:danger] = "Something Went wrong. Try logging in again."
 
-            redirect_to carts_path
+            render :new
         end
     end
 
     def show
         @order = Order.find_by_id(params[:id])
+        @buyer = current_user
     end
 
 
