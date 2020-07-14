@@ -1,28 +1,52 @@
-<h1>Create A Product For Sale</h1>
-
 <%= render partial: 'layouts/errors', locals: {object: @product} %>
 
-<%= bootstrap_form_for @product do |f| %>
+<div class="container h-100 d-flex justify-content-center">
+    <div class="row">
+        <div class="col-xs-4 col-xs-offset-4 p-4">
 
-    <%= f.file_field :image%><br>
+            <div class="panel panel-default box-shadow shadow-sm p-3 mb-5 bg-white rounded">
 
-    <%= f.text_field :title %>
+                <div class="panel-heading text-center">
+                    <span class="text-primary h4">List your product for sale</span> 
+                    <br>
+                    <br>
+                    <br>          
+                </div><!--.panel-heading-->
 
-    <%= f.text_field :brand %>
 
-    <%= f.text_field :product_model, :placeholder => "eg: iPhone X" %>
+                <div class="panel-body">
+                    <%= bootstrap_form_for @product do |f| %>
+                    <div class="form-row">
+                        <div class="col">
+                            <%= f.file_field :image%><br>
 
-    <%= f.text_field :storage_capacity, :placeholder => "eg: 64 GB" %>
+                            <%= f.text_field :title %>
 
-    <%= f.select :condition, options_for_select(["Brand New", "Refubrished", "Used"]) %>
+                            <%= f.text_field :brand %>
 
-    <%= f.text_field :color %>
+                            <%= f.text_field :product_model, :placeholder => "eg: iPhone X" %>
+                        
+                            <%= f.text_field :storage_capacity, :placeholder => "eg: 64 GB" %>
+                        </div>
+                        <div class="col">
+                             <%= f.select :condition, options_for_select(["Brand New", "Refubrished", "Used"]) %>
 
-    <%= f.text_area :description %>
+                            <%= f.text_field :color %>
 
-    <%= f.number_field :quantity %>
+                            <%= f.number_field :quantity %>
 
-    <%= f.number_field :price, label: "Price(per unit)", placeholder: "$"%>
+                            <%= f.number_field :price, label: "Price(per unit)", placeholder: "$"%>
 
-    <%= f.submit 'Submit', class: "bttn bttn-primary" %>
-<% end %>
+                            <%= f.text_area :description %>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="panel-footer">
+                    <%= f.submit 'Submit', class: "btn btn-block btn-success" %>
+                </div>
+                <% end %>
+            </div>
+        </div>
+    </div>
+</div>

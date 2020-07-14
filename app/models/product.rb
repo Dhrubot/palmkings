@@ -9,6 +9,8 @@ class Product < ApplicationRecord
 
   before_save :downcase_attributes
 
+  scope :by_brand, -> (brand) {where("brand = ?", brand)}
+
   def thumbnail
     @thumbnail = self.image.variant(resize_to_fit: [100, 100])
   end

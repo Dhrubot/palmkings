@@ -1,11 +1,11 @@
-<div class="container">
+<div class="container-fluid">
     <div class="row">
         <% @products.each do |p|%>
-            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 ml-auto">
                 <div class="box card">
                     <div class="box cardImg">
                         <% if p.image.attached? %>
-                            <%= image_tag url_for(p.image) %>
+                            <%= image_tag url_for(p.s_image) %>
                         <%end%>
                     </div>
                     <div class="info">
