@@ -5,6 +5,10 @@ class Product < ApplicationRecord
   has_many :buyer, class_name: "User", through: :order
   has_one_attached :image
 
+  validates :title, :brand, :condition, :color, :quantity, :price, presence: true
+
+  before_save :downcase_attributes
+
   def thumbnail
     @thumbnail = self.image.variant(resize_to_fit: [100, 100])
   end
@@ -14,13 +18,25 @@ class Product < ApplicationRecord
   end
 
   def available
-    self.quantity - self.sold
+    self.quantity - self.sold #### need to check in with this
   end
 
   private
 
-  def destroy
-    self.destroy if self.quantity < 1
+  def inventory(quantity)
+    if self.quantity < 1
+      self.destroy
+    else
+      self.quantity - quantity
+    end
+  end
+
+  def downcase_attributes
+    downcaseable = ["title", "brand", "condition", "color"]
+
+    self.attributes.each do |attr, val|
+      self.send("#{attr}=",val.to_s.strip.downcase) if downcaseable.include?(attr)
+    end
   end
   
 end

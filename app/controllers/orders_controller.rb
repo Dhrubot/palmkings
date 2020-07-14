@@ -10,6 +10,7 @@ class OrdersController < ApplicationController
     def create
         @order = Order.new(order_params)
         @order.cart = current_cart
+        byebug
         if current_user
             @order.buyer = current_user
         else
@@ -18,7 +19,7 @@ class OrdersController < ApplicationController
 
         if @order.save
             session[:user_id] = @order.buyer.id
-            current_user.new_cart
+            session[:cart_id] = current_user.new_cart.id
 
             redirect_to order_path(@order)
         else

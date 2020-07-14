@@ -14,9 +14,9 @@ class CartProductsController < ApplicationController
         product = Product.find_by_id(params[:cart_product][:product_id])
         # @cart_product = current_cart.cart_products.build(cart_products_params)
         @cart_product = current_cart.add_to_cart(product)
-        @cart_product.update_attributes(cart_products_params)
+        @cart_product.update(cart_products_params)
         
-        redirect_to cart_products_path
+        redirect_to cart_path(current_cart)
     end
 
     def show
@@ -39,16 +39,16 @@ class CartProductsController < ApplicationController
         # end
 
         @cart_product = current_cart.cart_products.find_by_id(params[:id])
-        @cart_product.update_attributes(cart_products_params)
+        @cart_product.update(cart_products_params)
 
-        redirect_to cart_products_path
+        redirect_to cart_path(current_cart)
     end
 
     def destroy
         @cart_product = CartProduct.find_by_id(params[:id])
         @cart_product.destroy
 
-        redirect_to cart_products_path
+        redirect_to cart_path(current_cart)
     end
 
     private

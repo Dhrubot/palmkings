@@ -22,7 +22,7 @@
 
     <%= f.number_field :quantity %>
 
-    <%= f.number_field :price %>
+    <%= f.number_field :price, label: "Price(per unit)", placeholder: "$"%>
 
     <%= f.submit 'Submit', class: "bttn bttn-primary" %>
 <% end %>

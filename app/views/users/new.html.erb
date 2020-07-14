@@ -1,46 +1,46 @@
-<h1 class="first-class align-center">Sign Up Here</h1>
+<div class="container h-100 d-flex justify-content-center">
+    <div class="row">
+        <div class="col-xs-4 col-xs-offset-4 p-4">
 
-<div class="container-fluid padding">
-    <div class="row welcome text-left">
-        <div class="col-12">
+            <div class="panel panel-default box-shadow shadow-sm p-3 mb-5 bg-white rounded">
 
-            <div>
-                <%= render partial: 'layouts/errors', locals: { object: @user } %>
-            </div>
+                <div class="panel-heading text-center">
+                    <span class="text-primary h4">Sign Up Here</span> 
+                    <br>
+                    <br>
+                    <br>          
+                </div><!--.panel-heading-->
 
-                
+                    <div>
+                        <%= render partial: 'layouts/errors', locals: { object: @user } %>
+                    </div>
+
+                <div class="panel-body">
                     <%= bootstrap_form_for @user do |f| %>
 
                     <div class="form-row">
                         <div class="col">
                             <%= f.text_field :firstname %>
-                        </div>
-
-                        <div class="col">  
-                            <%= f.text_field :lastname %>
-                        </div>
-
-                        <div class="col">
+                            
                             <%= f.text_field :username %>
+
+                            <%= f.password_field :password %> 
                         </div>
 
                         <div class="col">
+                            
+                            <%= f.text_field :lastname %>
+                        
                             <%= f.email_field :email %>
-                        </div>
 
-                        <div class="col">
-                            <%= f.password_field :password %>
-                        </div>
-
-                        <div class="col">
                             <%= f.password_field :password_confirmation %>
                         </div>
                     </div>
 
-                    <%= f.submit 'Sign up', class: "btn btn-success" %>
-
-                <% end %>
-            </div>
+                    <%= f.submit 'Sign up', class: "btn btn-block btn-success" %>
+                    <% end %>
+                </div><!--.panel-body-->
+            </div><!--panel -->
         </div>
     </div>
 </div>

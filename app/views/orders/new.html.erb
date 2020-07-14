@@ -8,6 +8,26 @@
 
 <%= bootstrap_form_for @order do |f| %>
 
+    <% if !current_user %>
+        <h3> Looks Like You haven't logged in.</h3>
+        <h4> You can fill out your information and submit the order.</h4>
+        <h4> We will create you an account to keep track of your order!</h4>
+        <h6> Already have an acount? <%= link_to "Click here", login_path %> to login </h6>
+        <%= f.fields_for :buyer do |buyer_attr| %>
+
+            <%= buyer_attr.text_field :firstname %>
+
+            <%= buyer_attr.text_field :lastname %>
+
+            <%= buyer_attr.text_field :username %>
+
+            <%= buyer_attr.email_field :email %>
+
+            <%= buyer_attr.password_field :password %>
+
+            <%= buyer_attr.password_field :password_confirmation %>
+        <% end %>
+
     <%= f.text_field :address_field_1, placeholder: "House and street number" %>
 
     <%= f.text_field :address_field_2, placeholder: "Apt/Flr" %>
@@ -20,21 +40,8 @@
 
     <%= f.select :payment_method, options_for_select(["Card", "Bank Account", "Paypal"]) %>
 
-    <%= f.fields_for :buyer do |buyer_attr| %>
-
-        <%= buyer_attr.text_field :firstname %>
-
-        <%= buyer_attr.text_field :lastname %>
-
-        <%= buyer_attr.text_field :username %>
-
-        <%= buyer_attr.email_field :email %>
-
-        <%= buyer_attr.password_field :password %>
-
-        <%= buyer_attr.password_field :password_confirmation %>
+    
     <% end %>
-
     <%= f.submit "Complete Order", class:"btn btn-primary btn-sm" %>
 
 <% end %>

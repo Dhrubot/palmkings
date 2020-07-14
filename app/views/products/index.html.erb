@@ -9,7 +9,7 @@
                     <% if p.image.attached? %>
                         <%= image_tag url_for(p.thumbnail) %>
                     <%end%>
-                    <li><%= link_to p.title, product_path(p) %></li>
+                    <li><%= link_to p.title.titleize, product_path(p) %></li>
                         <br>
                 <% end %>
             </ul>
