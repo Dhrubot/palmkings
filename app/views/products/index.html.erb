@@ -1,18 +1,21 @@
-
-<div class="container-fluid padding">
+<div class="container">
     <div class="row">
-        <div class="col-12">
-
-            <ul style="list-style-type:none">
-                <% @products.each do |p|%>
-                    
-                    <% if p.image.attached? %>
-                        <%= image_tag url_for(p.thumbnail) %>
-                    <%end%>
-                    <li><%= link_to p.title.titleize, product_path(p) %></li>
-                        <br>
-                <% end %>
-            </ul>
-        </div>
+        <% @products.each do |p|%>
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                <div class="box card">
+                    <div class="box cardImg">
+                        <% if p.image.attached? %>
+                            <%= image_tag url_for(p.image) %>
+                        <%end%>
+                    </div>
+                    <div class="info">
+                        <section>
+                            <strong><%= link_to p.title.titleize, product_path(p) %></strong>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        <% end %>
     </div>
 </div>
+
