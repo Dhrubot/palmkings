@@ -1,6 +1,8 @@
 class Order < ApplicationRecord
   belongs_to :buyer, :class_name => "User"
   belongs_to :cart
+  has_many :products, through: :cart, source: "products"
+  
   accepts_nested_attributes_for :buyer
 
   validates :address_field_1, :city, :state, :zipcode, presence: true

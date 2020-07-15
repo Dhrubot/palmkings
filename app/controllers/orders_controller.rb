@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
 
-    before_action :current_cart, :logged_in?, :set_cart
+    before_action :current_cart, :logged_in?, :current_user, :set_cart
 
     def new
         @order = Order.new
@@ -10,16 +10,18 @@ class OrdersController < ApplicationController
     def create
         @order = Order.new(order_params)
         @order.cart = current_cart
-        byebug
         if current_user
             @order.buyer = current_user
         else
             @user = @order.build_buyer(order_params[:buyer_attributes])
+            @user.save
+            current_user = @user
+            session[:user_id] = @user.id
+            @order.buyer = current_user
         end
 
         if @order.save
-            session[:user_id] = @order.buyer.id
-            session[:cart_id] = current_user.new_cart.id
+            current_cart.cart_products.destroy_all
 
             redirect_to order_path(@order)
         else
@@ -30,7 +32,8 @@ class OrdersController < ApplicationController
 
     def show
         @order = Order.find_by_id(params[:id])
-        @buyer = current_user
+
+        @buyer = @order.buyer
     end
 
 

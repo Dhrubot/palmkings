@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
     helper_method :current_user, :logged_in?, :redirect_if_not_logged_in, :current_cart
 
     def home
+        @latest_products = Product.latest
         render 'layouts/welcome'
     end
 

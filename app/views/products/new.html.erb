@@ -18,7 +18,7 @@
                     <%= bootstrap_form_for @product do |f| %>
                     <div class="form-row">
                         <div class="col">
-                            <%= f.file_field :image%><br>
+                            <%= f.file_field :image %><br>
 
                             <%= f.text_field :title %>
 
@@ -38,12 +38,13 @@
                             <%= f.number_field :price, label: "Price(per unit)", placeholder: "$"%>
 
                             <%= f.text_area :description %>
+                            <%= f.submit 'Submit', class: "btn btn-block btn-success" %>
                         </div>
                         
                     </div>
                 </div>
                 <div class="panel-footer">
-                    <%= f.submit 'Submit', class: "btn btn-block btn-success" %>
+                    
                 </div>
                 <% end %>
             </div>

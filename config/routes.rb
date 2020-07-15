@@ -20,9 +20,15 @@ Rails.application.routes.draw do
     resources :products, only: [:index, :new, :create]
   end
 
+  resources :products do
+    collection do
+      get :brands
+    end
+  end
+  
   resources :orders
   resources :cart_products
   resources :carts
-  resources :products
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

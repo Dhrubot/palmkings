@@ -8,6 +8,7 @@ class ProductsController < ApplicationController
         else
         @products = Product.all
         end
+        @brands = Product.brands
     end
 
     def new
@@ -21,10 +22,10 @@ class ProductsController < ApplicationController
     def create
         @product = current_user.seller_products.build(product_params)
 
-        if @product.save
+        if @product.save!
             redirect_to  product_path(@product)
         else
-            render :new_user_product_path
+            render :new
         end
     end
 
@@ -46,6 +47,10 @@ class ProductsController < ApplicationController
         @product = Product.find_by_id(params[:id])
         @product.destroy
         redirect_to products_path
+    end
+
+    def brand
+        @brands = Product.brands
     end
 
     private

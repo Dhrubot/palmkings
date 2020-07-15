@@ -27,6 +27,7 @@
 
             <%= buyer_attr.password_field :password_confirmation %>
         <% end %>
+    <% end %>
 
     <%= f.text_field :address_field_1, placeholder: "House and street number" %>
 
@@ -41,7 +42,6 @@
     <%= f.select :payment_method, options_for_select(["Card", "Bank Account", "Paypal"]) %>
 
     
-    <% end %>
     <%= f.submit "Complete Order", class:"btn btn-primary btn-sm" %>
 
 <% end %>
