@@ -23,9 +23,16 @@ class Product < ApplicationRecord
     @image = self.image.variant(resize_to_fit: [300, 300])
   end
 
+  def cart_image
+    @image = self.image.variant(resize_to_fit: [50, 50])
+  end
+
   def available
     self.quantity - self.sold #### need to check in with this
   end
+
+
+
 
   private
 
@@ -33,7 +40,7 @@ class Product < ApplicationRecord
     Product.all.collect(&:brand).uniq
   end
 
-  def inventory(quantity)
+  def update_inventory(quantity)
     if self.quantity < 1
       self.destroy
     else
@@ -45,7 +52,7 @@ class Product < ApplicationRecord
     downcaseable = ["title", "brand", "condition", "color"]
 
     self.attributes.each do |attr, val|
-      self.send("#{attr}=",val.to_s.strip.downcase) if downcaseable.include?(attr)
+      self.send("#{attr}=", val.to_s.strip.downcase) if downcaseable.include?(attr)
     end
   end
   

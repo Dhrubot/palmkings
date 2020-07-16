@@ -21,6 +21,7 @@ class OrdersController < ApplicationController
         end
 
         if @order.save
+            # do a product inventory update
             current_cart.cart_products.destroy_all
 
             redirect_to order_path(@order)

@@ -1,23 +1,46 @@
-<div class="container-fluid">
-<div class="row">
-<div class="col">
-<h1> Update Account </h1>
-<%= bootstrap_form_for @user do |f| %>
+<div class="container bootstrap snippet">
+<hr>
+    <div class="row">
+  		<div class="col-sm-10"><h1> Update Account </h1></div>
+    </div>
+    <div class="row">
+  		<div class="col-sm-3"><!--left col-->
+        <hr><br>
+          
+          
+          <ul class="list-group">
+            <li class="list-group-item text-muted"> Account <i class="fa fa-dashboard fa-1x"></i></li>
+            <li class="list-group-item text-right"><span class="pull-left"><strong>You have sold</strong></span> 125</li>
+            <li class="list-group-item text-right"><span class="pull-left"><strong>You have bought</strong></span> 13</li>
+            <li class="list-group-item text-right"><span class="pull-left"><strong>There are </strong></span> 37</li>
+          </ul> 
+          
+        </div><!--/col-3-->
 
-    <%= f.text_field :firstname %>
+    	<div class="col-sm-9">
+              
+          <div class="tab-content">
+            <div class="tab-pane active">
+                <hr>
+                    <%= bootstrap_form_for @user do |f| %>
 
-    <%= f.text_field :lastname %>
+                        <%= f.text_field :firstname %>
 
-    <%= f.email_field :email %>
+                        <%= f.text_field :lastname %>
 
-    <%= f.password_field :password %>
+                        <%= f.email_field :email %>
 
-    <%= f.password_field :password_confirmation %>
+                        <%= f.password_field :password %>
 
-    <%= f.submit 'Update', class: "btn btn-primary"%> 
+                        <%= f.password_field :password_confirmation %>
 
-<% end %>
-
+                        <%= f.submit 'Update', class: "btn btn-primary"%> 
+                        <%= link_to 'Delete account', user_path(@user), method: :delete, class: "btn btn-danger" %>
+                    <% end %>
+                    <hr>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-</div>
-</div>
+                         

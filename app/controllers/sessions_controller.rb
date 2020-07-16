@@ -1,16 +1,22 @@
 class SessionsController < ApplicationController
 
+  before_action :current_cart
+
+  def new
+  end
+
   def create
     @user = User.find_by(username: params[:user][:username])
 
     if @user && @user.authenticate(params[:user][:password])
 
       session[:user_id] = @user.id
+      current_cart.buyer = @user
 
       redirect_to user_path(@user)
     else
-      flash[:danger] = "Username or Password is wrong"
-      redirect_to login_path
+      flash[:danger] = "Username/password combination does not match."
+      render :new
     end
   end
 

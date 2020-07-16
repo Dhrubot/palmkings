@@ -23,7 +23,7 @@ class ApplicationController < ActionController::Base
     end
 
     def current_cart
-            
+        
         if session[:cart_id]
             @cart = Cart.find_or_create_by(:id => session[:cart_id])
         else

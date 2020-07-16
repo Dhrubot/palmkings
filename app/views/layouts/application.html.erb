@@ -24,7 +24,7 @@
                           <li class="nav-item"><%= link_to 'Home', root_path, class: "nav-link" %></li>
                           <li class="nav-item"><%= link_to 'Products', products_path, class: "nav-link" %></li>
                           <li class="nav-item"><%= link_to 'Sell a Product', new_product_path, class: "nav-link" %></li>
-                          <li class="nav-item"><%= link_to 'Cart', cart_path(current_cart), class: "nav-link" %>
+                          <li class="nav-item"><%= link_to 'Cart', cart_path, class: "nav-link" %>
                             <%if logged_in? %>
                             <!--Drop Down Menu -->
                                 <li class="nav-item dropdown">
