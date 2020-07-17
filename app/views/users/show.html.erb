@@ -1,7 +1,5 @@
-<br>
-<br>
-<br>
-<div class="container emp-profile padding">
+
+<div class="container emp-profile padding pt-4">
     <div class="row">
         <div class="col-md-6">
             <div class="profile-head">
@@ -13,24 +11,23 @@
                 </h6>
             </div>
         </div>
-        <div class="col-md-2">
-            <%= link_to "Edit Profile", edit_user_path(@user), class: "btn btn-primary" %>
-        </div>
     </div>
 
-<br>
-<br>
-<br>
-    <div class="row">
+    <div class="row pt-5">
         <div class="col-md-4">
             <div class="profile-work">
                             <p><b>Useful Links</b></p>
-                            <a href="">Seller Account</a><br/>
+                            <span><%= link_to "List of active sales", user_products_path(@user)%></span><br/>
             </div>
         </div>
-        <div class="col-md-8">
+        <div class="col-md-8 p-4">
             <div class="tab-content profile-tab" id="myTabContent">
                 <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                    <div class="row p-4 text-center">
+                        <div class="col-md-6">
+                            <label><b>Personal Informations</b></label>
+                        </div>
+                    </div>
                     <div class="row">
                         <div class="col-md-6">
                             <label><b>Username</b></label>
@@ -61,11 +58,18 @@
                             <label><b>Member since </b></label>
                         </div>
                         <div class="col-md-6">
-                            <p><%= @user.created_at %></p>
+                            <p><%= @user.created_at.strftime("%Y-%m-%d") %></p>
                         </div>
                     </div>                  
                                         
                 </div>
+            </div>
+        </div>
+        <div class="container p-4">
+            <div class="row">
+                <%= link_to "Edit Profile", edit_user_path(@user), class: "btn btn-primary" %>
+            <div class=col>
+            </div>
             </div>
         </div>
     </div>

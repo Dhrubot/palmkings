@@ -16,7 +16,11 @@ class Product < ApplicationRecord
   scope :latest, -> { order("created_at DESC").limit(8) }
 
   def thumbnail
-    @thumbnail = self.image.variant(resize_to_fit: [100, 100])
+    @thumbnail = self.image.variant(resize_to_fit: [150, 150])
+  end
+
+  def card_img
+    @card = self.image.variant(resize_to_fit: [286, 180])
   end
 
   def s_image

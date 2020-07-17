@@ -7,14 +7,14 @@
             <div class="panel panel-default box-shadow shadow-sm p-3 mb-5 bg-white rounded">
 
                 <div class="panel-heading text-center">
-                    <span class="text-primary h4">List your product for sale</span> 
+                    <span class="text-info h4">List the descriptions of your product</span> 
                     <br>
                     <br>
                     <br>          
                 </div><!--.panel-heading-->
 
 
-                <div class="panel-body">
+                <div class="panel-body p-4">
                     <%= bootstrap_form_for @product do |f| %>
                     <div class="form-row">
                         <div class="col">
@@ -33,7 +33,7 @@
 
                             <%= f.text_field :color %>
 
-                            <%= f.number_field :quantity %>
+                            <%= f.number_field :quantity, label: "Quantity (How many piece)" %>
 
                             <%= f.number_field :price, label: "Price(per unit)", placeholder: "$"%>
 

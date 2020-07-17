@@ -7,10 +7,6 @@ class UsersController < ApplicationController
         redirect_to root_path
     end
 
-    def dashboard
-        @user = User.find_by_id(current_user.id)
-    end
-
     def new
         @user = User.new
     end

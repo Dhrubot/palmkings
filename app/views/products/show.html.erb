@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container p-4">
     <div class="row">
         <div class="col-xs-4 item-photo">
         <div class="display:flex;justify-content:center;align-items:center;border-right:1px solid #f6f6f6">
@@ -18,13 +18,13 @@
                 <li><strong>Color:</strong>  <%= @product.color%><br></li>
                 <li><strong>Price: $</strong>  <%= @product.price %> <br></li>
                 <li><li><strong>Available Quantity:</strong> <%= @product.quantity %>
-            
-
-
+            </ul>
+        </div>
+    <div class="container">
+        <div class="row">
+        <div class="col-xs-5 ml-auto" style="border:0px solid gray list-style-type:none;font-size:14px;display:inline-flex;margin-bottom:0;margin-top:20px">
             <% if @product.seller == current_user %>
-                    <%= link_to 'Edit', edit_product_path(@product), class: "btn btn-primary" %>
-
-                    <%= link_to 'Delete', product_path(@product), method: :delete, class: "btn btn-danger" %><br>
+                    <%= link_to 'Edit details', edit_product_path(@product), class: "btn btn-sm btn-outline-primary" %>
             <% else %>
                 <%= bootstrap_form_for CartProduct.new do |f| %>
                     <%= f.select :quantity, options_for_select(select_quantity(@product)), label: "Qty"%>
@@ -33,8 +33,9 @@
                 <% end %>
 
             <% end %>
-            </ul>
         </div>
+    </div>
+    </div>
         
         
         <div class="col-xs-9">

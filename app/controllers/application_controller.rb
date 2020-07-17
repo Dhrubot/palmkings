@@ -4,6 +4,8 @@ class ApplicationController < ActionController::Base
 
     def home
         @latest_products = Product.latest
+        @trending_products = Product.trending
+        @brands = Product.all.collect(&:brand).uniq
         render 'layouts/welcome'
     end
 

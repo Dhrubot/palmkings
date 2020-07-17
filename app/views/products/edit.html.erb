@@ -1,34 +1,51 @@
-<h1> Edit Product Details </h1>
+<div class="container bootstrap snippet">
+<hr>
+    <div class="row">
+  		<div class="col-sm-10"><h1> Edit Product Details </h1></div>
+    </div>
+    <div class="row">
+  		<div class="col-sm-3"><!--left col-->
+        <hr><br>
+          
+          
+          <ul class="list-group">
+            <li class="list-group-item text-muted"> Product Details<i class="fa fa-dashboard fa-1x"></i></li>
+          </ul> 
+          
+        </div><!--/col-3-->
 
-<%= form_for @product do |f| %>
+    	<div class="col-sm-9">
+              
+          <div class="tab-content">
+            <div class="tab-pane active">
+                <hr>
+                    <%= bootstrap_form_for @product do |f| %>
 
-    <%= f.label :title %>
-    <%= f.text_field :title %>
+                        <%= f.text_field :title %>
 
-    <%= f.label :brand %>
-    <%= f.text_field :brand %>
+                        <%= f.text_field :brand %>
 
-    <%= f.label :product_model %>
-    <%= f.text_field :product_model, :placeholder => "eg: iPhone X" %>
+                        <%= f.text_field :product_model, :placeholder => "eg: iPhone X" %>
 
-    <%= f.label :storage_capacity %>
-    <%= f.text_field :storage_capacity, :placeholder => "eg: 64 GB" %>
+                        <%= f.text_field :storage_capacity, :placeholder => "eg: 64 GB" %>
 
-    <%= f.label :condition %>
-    <%= f.select :condition, options_for_select(["Brand New", "Refubrished", "Used"]) %>
+                        <%= f.select :condition, options_for_select(["Brand New", "Refubrished", "Used"]) %>
 
-    <%= f.label :color %>
-    <%= f.text_field :color %>
+                        <%= f.text_field :color %>
 
-    <%= f.label :description %>
-    <%= f.text_area :description %>
+                        <%= f.text_area :description %>
 
-    <%= f.label :quantity %>
-    <%= f.number_field :quantity %>
+                        <%= f.number_field :quantity %>
 
-    <%= f.label :price %>
-    <%= f.number_field :price %>
+                        <%= f.number_field :price %>
 
-    <%= f.submit 'Update'%> 
 
-<% end %>
+                        <%= f.submit 'Update', class: "btn btn-primary"%> 
+                        <%= link_to 'Delete product', product_path(@product), method: :delete, class: "btn btn-danger" %>
+                    <% end %>
+                    <hr>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
