@@ -9,7 +9,6 @@ class User < ApplicationRecord
     validates :username, :email, :firstname, :lastname, presence: true
     validates :username, :email, uniqueness: true, case_sensitive: false
     validates_length_of :username, minimum: 3
-    validates_length_of :password, in: 5..30
 
     before_save :downcase_attributes
 
