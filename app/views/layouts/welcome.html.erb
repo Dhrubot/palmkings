@@ -169,26 +169,3 @@
     </div>
 </div>
 
-<div class="brand-search py-5">
-    <div class="container">
-        <div class="row pb-4 text-center">
-            <div class="col-md-12">
-                <h2>Shop by Brands</h2>
-            </div>
-        </div>
-       
-	    <div class="row text-center">
-         <% @brands.each do |brand|%>
-            <div class="col-md-4 box border py-4">
-                <div class="box-carimage text-center">
-                    <%= image_tag url_for(Product.by_brand(brand).first.thumbnail) %>
-                </div>
-                <div class="box-cartitle">
-                    <h6> <%=link_to brand.titleize, brands_products_path%> </h6></a>
-                </div>
-            </div> 
-            <% end %>	    
-		</div>
-        
-	</div>
-</div>

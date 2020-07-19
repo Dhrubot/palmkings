@@ -37,6 +37,7 @@ class ApplicationController < ActionController::Base
 
     def set_cart
         current_cart.buyer = current_user if current_user
+        current_cart.save
     end
 
 end

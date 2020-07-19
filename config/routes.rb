@@ -20,12 +20,7 @@ Rails.application.routes.draw do
     resources :products, only: [:index, :new, :create]
   end
 
-  resources :products do
-    collection do
-      get :brands
-    end
-  end
-  
+  resources :products
   resources :orders
   resources :cart_products
   resources :carts

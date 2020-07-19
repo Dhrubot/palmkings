@@ -22,7 +22,10 @@ class OrdersController < ApplicationController
 
         if @order.save
             # do a product inventory update
-            current_cart.cart_products.destroy_all
+            
+            session.delete(:cart_id)
+            current_cart
+            set_cart
 
             redirect_to order_path(@order)
         else

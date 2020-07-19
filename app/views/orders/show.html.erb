@@ -1,1 +1,9 @@
-<h1> Thank You for Your Order <%= @buyer.firstname %>!!</h1>
+
+<div class="jumbotron text-center">
+  <h1 class="display-3">Thank You for your order <%= @buyer.firstname %>!</h1>
+  <p class="lead"><strong>Please check your email</strong> for order details.</p>
+  <hr>
+  <p class="lead">
+    <%= link_to "Continue to homepage", root_path, class: "btn btn-primary btn-sm"%>
+  </p>
+</div>

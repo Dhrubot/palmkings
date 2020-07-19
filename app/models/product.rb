@@ -11,10 +11,12 @@ class Product < ApplicationRecord
 
   before_save :downcase_attributes
 
-  scope :by_brand, -> (brand) { where("brand = ?", brand) }
   scope :trending, -> { joins(:cart_products).order("cart_products.quantity DESC").limit(8) }
   scope :latest, -> { order("created_at DESC").limit(8) }
 
+
+
+  
   def thumbnail
     @thumbnail = self.image.variant(resize_to_fit: [150, 150])
   end
@@ -29,10 +31,6 @@ class Product < ApplicationRecord
 
   def cart_image
     @image = self.image.variant(resize_to_fit: [50, 50])
-  end
-
-  def available
-    self.quantity - self.sold #### need to check in with this
   end
 
 

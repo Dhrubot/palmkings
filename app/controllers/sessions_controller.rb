@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
     if @user && @user.authenticate(params[:user][:password])
 
       session[:user_id] = @user.id
-      current_cart.buyer = @user
+      set_cart
 
       redirect_to user_path(@user)
     else
