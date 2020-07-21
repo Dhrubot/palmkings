@@ -11,7 +11,7 @@ class Product < ApplicationRecord
 
   before_save :downcase_attributes
 
-  scope :trending, -> { joins(:cart_products).order("cart_products.quantity DESC").limit(8) }
+  scope :trending, -> { joins(:orders).joins(:cart_products).order("cart_products.quantity DESC").limit(8).uniq }
   scope :latest, -> { order("created_at DESC").limit(8) }
 
 

@@ -125,7 +125,7 @@
                                             <%= image_tag url_for(p.thumbnail)%>
                                         </div>
                                         <div class="thumb-content">
-                                        <h4><%= @trending_products.first.title.titleize %></h4>
+                                        <h4><%= p.title.titleize %></h4>
 									    <p class="item-price">$ <%= p.price %></p>
                                         <%= link_to "Add to cart", product_path(p), class: "btn btn-primary" %>
                                         </div>
