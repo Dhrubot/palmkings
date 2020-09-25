@@ -12,7 +12,6 @@ Rails.application.routes.draw do
 
   #Omniauth
   get '/auth/:provider/callback', to: 'sessions#oauth_login'
-  get '/auth/facebook', to: 'sessions#oauth_login'
 
   get 'cart', to: 'carts#show', as: 'cart'
 
