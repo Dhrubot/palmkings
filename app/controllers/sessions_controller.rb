@@ -21,12 +21,8 @@ class SessionsController < ApplicationController
   end
 
   def oauth_login
-    if params[:provider] == "google_oauth2"
-      @user = User.from_google(auth)                      # User model
-      
-    else
-      @user = User.from_facebook(auth)
-    end
+
+    @user = User.new_from_omniauth(auth)
     
     @user.save
     session[:user_id] = @user.id
