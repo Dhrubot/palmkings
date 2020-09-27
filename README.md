@@ -4,7 +4,7 @@
 Welcome To Palmkings! It's a marketplace for cellphone where user can sell and purchase phones. IT is written in ruby on rails.
 
 Check out the live version right here.
-https://glacial-wildwood-90250.herokuapp.com/
+https://palmkings.herokuapp.com/
 
 To try this app out locally, please clone it to your local disk from this repository.
 Then in the terminal in the project folder run
